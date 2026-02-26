@@ -10,9 +10,10 @@ import {
 } from '@clerk/nextjs';
 import { dark } from "@clerk/themes";
 
-import { ThemeProvider } from "@/components/theme-provider";
+
 
 import "./globals.css";
+import { ThemeProvider } from "@/components/theme-provider";
 
 const inter = Inter({
   variable: "--font-inter",
