@@ -1,163 +1,166 @@
-Elara - An AI-augmented Development Environment
+# Elara: An AI-Native Development Environment
 
-Elara is a browser-based, AI-augmented development environment built for the next generation of builders.
+## 🚀 Overview
+**Elara** is a next-generation **AI-augmented development environment** built for modern software teams. It unifies **intelligent code editing, autonomous AI tool execution, and in-browser runtime environments** within a scalable, reactive architecture.
 
-Not an editor with AI bolted on.
-An IDE designed AI-first from the ground up.
+Designed for developers who want more than autocomplete, Elara delivers **context-aware code generation, structured file manipulation, and real-time execution** — all inside the browser.
 
-Write code.
-Think in prompts.
-Ship faster.
+Elara is not just an editor. It is a **reference architecture for building AI-native development systems** that are modular, scalable, and production-ready.
 
-⚡ Why Elara?
+---
 
-Modern development is fragmented.
+## 💡 Core Idea
+Traditional IDEs treat AI as a plugin.
 
-You switch between:
+Elara treats AI as infrastructure.
 
-Docs
+Instead of switching between:
+- Documentation
+- AI chat tools
+- Terminal
+- Local runtime
+- Your editor
 
-StackOverflow
+Elara unifies everything into a **single agentic development workspace**.
 
-Terminal
+The system is engineered to:
+- Reduce cognitive overhead
+- Eliminate context switching
+- Enable structured AI tool execution
+- Maintain real-time responsiveness at scale
 
-GitHub
+---
 
-AI tools
+## 🧩 Key Features
 
-Your editor
+- **AI-Native Editing:** Context-aware code generation with structured file operations (create, read, update, delete).
+- **Agentic Tool Loop:** AI executes deterministic tools instead of returning raw text.
+- **Live Documentation Injection:** Scrapes real-time documentation to prevent outdated or hallucinated outputs.
+- **In-Browser Runtime:** Full Node.js environment powered by WebContainers.
+- **Reactive Architecture:** Real-time sync via Convex without manual WebSocket orchestration.
+- **Authentication & Project Isolation:** Secure session handling and workspace separation.
+- **Developer-First Monorepo:** Turborepo + PNPM for modular scalability.
+- **Observability & Monitoring:** Production-grade error tracking and system diagnostics.
 
-Elara collapses that stack into a single intelligent workspace.
+---
 
-It’s not autocomplete.
-It’s an agentic coding partner.
+## ⚙️ Tech Stack
 
-✨ What Makes It Different
-🧠 AI That Acts, Not Just Suggests
+| Layer | Technologies |
+|--------|---------------|
+| **Frontend** | Next.js 15 (App Router), React 19, Tailwind CSS, shadcn/ui, CodeMirror 6 |
+| **Backend / Realtime** | Convex |
+| **AI & Orchestration** | Vercel AI SDK, Inngest (durable workflows), FireCrawl (web scraping) |
+| **Authentication** | Clerk |
+| **Runtime** | WebContainers, Xterm.js |
+| **Monitoring & DX** | Sentry, Turborepo, PNPM |
 
-Context-aware code generation
+---
 
-Inline ghost text
+## 🧱 Architecture
 
-Quick Edit command palette
+Elara follows a modular **monorepo architecture**:
 
-Autonomous file creation & refactoring
+- `apps/web` → Main IDE Interface  
+- `apps/widget` → Embeddable AI interaction layer  
+- `apps/embed` → Runtime integration script  
 
-Structured tool execution (read / write / update / delete)
+Shared packages provide:
+- Typed APIs
+- UI components
+- Convex schema bindings
+- Agent abstractions
 
-🌐 Live Documentation Awareness
+The system is divided into four coordinated layers:
 
-Elara doesn’t rely on stale training data.
+1. **Editor Layer** (CodeMirror 6)
+2. **Agent Execution Layer** (AI + Tool Calls)
+3. **Runtime Layer** (WebContainers + Terminal)
+4. **Reactive Sync Layer** (Convex)
 
-When needed, it:
+This separation ensures scalability, maintainability, and deterministic AI behavior.
 
-Scrapes live documentation
+---
 
-Injects it into the reasoning context
+## 🔁 Agent Execution Model
 
-Generates up-to-date solutions
+Elara operates on a structured agent loop:
 
-No deprecated APIs. No hallucinated syntax.
+1. User writes code or submits a prompt  
+2. Context is extracted  
+3. Documentation is fetched if required  
+4. AI selects and executes structured tools  
+5. Workspace updates in real time  
 
-💻 Full Runtime in the Browser
+Unlike standard chat-based AI tools, Elara performs **deterministic tool execution**, not just text completion.
 
-Elara runs a real Node.js environment directly inside your browser.
+---
 
-Install packages
+## 🧪 Testing & Reliability
 
-Run dev servers
+A multi-layer reliability strategy ensures production readiness:
 
-Open live preview
+- **Unit & Integration Tests**
+- **E2E Testing** across editor → AI → runtime flows
+- **Performance Testing** under concurrent sessions
+- **Structured Tool Validation**
+- **Monitoring & Error Replay** via Sentry
 
-Use a real terminal
+Durable background execution ensures long-running AI tasks never block the UI.
 
-No Docker.
-No remote VM spin-ups.
-No backend compute required.
+---
 
-🔄 Real-Time by Design
+## 🏁 Outcome
 
-Reactive database architecture
+Elara demonstrates a scalable, AI-native IDE architecture that:
 
-Instant sync
+- Embeds AI as a core system component
+- Executes structured file operations safely
+- Runs full development environments inside the browser
+- Maintains real-time responsiveness
+- Provides a blueprint for next-generation AI development tools
 
-Background AI execution without blocking UI
+---
 
-Durable tool loops
+## 🚀 Getting Started
 
-The system is built to scale, not stall.
+### Clone Repository
 
-🏗 Tech Stack
+```bash
+git clone https://github.com/anshbhatia04/elara.git
+cd elara
+```
 
-Frontend
+### Install Dependencies
 
-Next.js (App Router)
+```bash
+pnpm install
+```
 
-React 19
+### Start Development Server
 
-Tailwind CSS
+```bash
+pnpm dev
+```
 
-shadcn/ui
+Open:
 
-CodeMirror 6
+```
+http://localhost:3000
+```
 
-AI & Agents
+---
 
-Vercel AI SDK
+## 📚 References
 
-Inngest (durable background workflows)
+1. https://nextjs.org/docs  
+2. https://docs.convex.dev  
+3. https://sdk.vercel.ai/docs  
+4. https://www.inngest.com/docs  
+5. https://webcontainers.io  
+6. https://clerk.dev/docs  
+7. https://docs.sentry.io  
 
-FireCrawl (live web context injection)
+---
 
-Realtime & Auth
-
-Convex (reactive backend)
-
-Clerk (authentication)
-
-Sentry (monitoring)
-
-Runtime
-
-WebContainers
-
-Xterm.js
-
-🧠 The Agentic Loop
-
-You write code or give a prompt.
-
-Elara analyzes the context.
-
-It fetches documentation if needed.
-
-Executes structured tools.
-
-Updates your workspace in real time.
-
-No copy-pasting between tabs.
-No context switching.
-
-Just flow.
-
-
-🛣 Roadmap
-
-Multi-agent reasoning
-
-Multiplayer collaborative editing
-
-Autonomous terminal debugging
-
-One-click deployment pipelines
-
-AI-native Git workflows
-
-🔮 The Bigger Idea
-
-Software tools are evolving from passive instruments
-to collaborative reasoning systems.
-
-Elara is an early step toward AI-native development environments —
-where the editor doesn’t just highlight your syntax,
-it understands your intent.
+© 2026 Elara Project — All Rights Reserved.
