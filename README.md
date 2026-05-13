@@ -39,7 +39,7 @@ The system is engineered to:
 - **In-Browser Runtime:** Full Node.js environment powered by WebContainers.
 - **Reactive Architecture:** Real-time sync via Convex without manual WebSocket orchestration.
 - **Authentication & Project Isolation:** Secure session handling and workspace separation.
-- **Developer-First Monorepo:** Turborepo + PNPM for modular scalability.
+- **Developer-First Structure:** Modern tooling leveraging Next.js App Router for modular scalability.
 - **Observability & Monitoring:** Production-grade error tracking and system diagnostics.
 
 ---
@@ -48,37 +48,25 @@ The system is engineered to:
 
 | Layer | Technologies |
 |--------|---------------|
-| **Frontend** | Next.js 15 (App Router), React 19, Tailwind CSS, shadcn/ui, CodeMirror 6 |
+| **Frontend** | Next.js 16 (App Router), React 19, Tailwind CSS, shadcn/ui, CodeMirror 6 |
 | **Backend / Realtime** | Convex |
 | **AI & Orchestration** | Vercel AI SDK, Inngest (durable workflows), FireCrawl (web scraping) |
 | **Authentication** | Clerk |
 | **Runtime** | WebContainers, Xterm.js |
-| **Monitoring & DX** | Sentry, Turborepo, PNPM |
+| **Monitoring & DX** | Sentry |
 
 ---
 
 ## 🧱 Architecture
 
-Elara follows a modular **monorepo architecture**:
+Elara's architecture abandons the fragmented plugin model in favor of a highly decoupled, four-layer system designed for real-time synchronization and in-browser execution:
 
-- `apps/web` → Main IDE Interface  
-- `apps/widget` → Embeddable AI interaction layer  
-- `apps/embed` → Runtime integration script  
+1. **Frontend Engine Layer:** The main IDE interface built with Next.js, incorporating CodeMirror 6 for code editing, real-time syntax highlighting, and ghost text generation.
+2. **Runtime Layer:** An isolated in-browser execution environment powered by WebContainers, allowing developers to boot Node.js, install packages, and pipe output to Xterm.js without external remote servers.
+3. **Intelligence Layer:** Orchestrated by the Vercel AI SDK, this layer handles prompt reasoning, memory, and interfaces with FireCrawl for real-time documentation retrieval.
+4. **Data & Orchestration Layer:** Convex serves as the reactive backbone, pushing state changes (like file updates) to the client instantly, while Inngest manages durable, long-running background tasks for the AI agent loop to prevent UI blocking.
 
-Shared packages provide:
-- Typed APIs
-- UI components
-- Convex schema bindings
-- Agent abstractions
-
-The system is divided into four coordinated layers:
-
-1. **Editor Layer** (CodeMirror 6)
-2. **Agent Execution Layer** (AI + Tool Calls)
-3. **Runtime Layer** (WebContainers + Terminal)
-4. **Reactive Sync Layer** (Convex)
-
-This separation ensures scalability, maintainability, and deterministic AI behavior.
+This separation ensures scalability, maintainability, and deterministic AI behavior entirely within a single browser tab.
 
 ---
 
@@ -88,8 +76,8 @@ Elara operates on a structured agent loop:
 
 1. User writes code or submits a prompt  
 2. Context is extracted  
-3. Documentation is fetched if required  
-4. AI selects and executes structured tools  
+3. Documentation is fetched via FireCrawl if required  
+4. AI selects and executes structured tools (CRUD operations)  
 5. Workspace updates in real time  
 
 Unlike standard chat-based AI tools, Elara performs **deterministic tool execution**, not just text completion.
@@ -106,7 +94,7 @@ A multi-layer reliability strategy ensures production readiness:
 - **Structured Tool Validation**
 - **Monitoring & Error Replay** via Sentry
 
-Durable background execution ensures long-running AI tasks never block the UI.
+Durable background execution via Inngest ensures long-running AI tasks never block the UI.
 
 ---
 
